@@ -43,6 +43,22 @@ namespace AddressBooks
 
             People.Add(person);
         }
+        public static void Removeperson()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string firstName = Console.ReadLine();
+            Contact person = People.FirstOrDefault(x => x.FirstName.ToLower() == firstName.ToLower());
+
+            if (person == null)
+            {
+                Console.WriteLine("That person could not be found. Press any key to continue");
+                Console.ReadKey();
+                return;
+            }
+
+            People.Remove(person);
+
+        }
         public static void PrintPerson(Contact person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
