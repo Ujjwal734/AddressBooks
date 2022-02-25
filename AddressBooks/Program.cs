@@ -1,6 +1,6 @@
 ﻿using AddressBooks;
 Console.WriteLine("Hello, welcome to Address Book...!");
-Contact person = new Contact();
+/*Contact person = new Contact();
 
 Console.WriteLine("Enter add command to add person ");
 Console.WriteLine("Enter remove commad to remove person ");
@@ -23,4 +23,7 @@ while (command != "exist")
             AddressBookManager.ListPeople();
             break;
     }
-}
+}*/
+DictionaryAddBooks dictionaryAdd = new DictionaryAddBooks();
+dictionaryAdd.AddPerson();
+dictionaryAdd.ListPeople();
