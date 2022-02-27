@@ -75,5 +75,98 @@ namespace AddressBooks
                 }
             }
         }
+        public void sortByCityStateOrZip()
+        {
+            Console.WriteLine("Enter 1 for city 2 for state and 3 for zip to sort the details");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    foreach (var addressBook in PeopleDictionary)
+                    {
+                        Console.WriteLine("Address book name:" + addressBook.Key);
+
+                        foreach (var person in
+                            addressBook.Value.OrderBy(x => x.City))
+                        {
+                            Console.WriteLine("First Name: " + person.FirstName);
+                            Console.WriteLine("Last Name: " + person.LastName);
+                            Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                            Console.WriteLine("Address: " + person.Addresses);
+                            Console.WriteLine("city: " + person.City);
+                            Console.WriteLine("State : " + person.State);
+                            Console.WriteLine("Zip:" + person.Zip);
+                            Console.WriteLine("-------------------------------------------");
+                        }
+                    }
+                    break;
+                case 2:
+                    foreach (var addressBook in PeopleDictionary)
+                    {
+                        Console.WriteLine("Address book name:" + addressBook.Key);
+
+                        foreach (var person in
+                            addressBook.Value.OrderBy(x => x.State))
+                        {
+                            Console.WriteLine("First Name: " + person.FirstName);
+                            Console.WriteLine("Last Name: " + person.LastName);
+                            Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                            Console.WriteLine("Address: " + person.Addresses);
+                            Console.WriteLine("city: " + person.City);
+                            Console.WriteLine("State : " + person.State);
+                            Console.WriteLine("Zip:" + person.Zip);
+                            Console.WriteLine("-------------------------------------------");
+                        }
+                    }
+                    break;
+                case 3:
+                    foreach (var addressBook in PeopleDictionary)
+                    {
+                        Console.WriteLine("Address book name:" + addressBook.Key);
+
+                        foreach (var person in
+                            addressBook.Value.OrderBy(x => x.Zip))
+                        {
+                            Console.WriteLine("First Name: " + person.FirstName);
+                            Console.WriteLine("Last Name: " + person.LastName);
+                            Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                            Console.WriteLine("Address: " + person.Addresses);
+                            Console.WriteLine("city: " + person.City);
+                            Console.WriteLine("State : " + person.State);
+                            Console.WriteLine("Zip:" + person.Zip);
+                            Console.WriteLine("-------------------------------------------");
+                        }
+                    }
+                    break;
+            }
+        }
+        public void ListPeople()
+        {
+            if (PeopleDictionary.Count == 0)
+            {
+                Console.WriteLine("Your address book is empty. Press any key to continue.");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Here are the current people in your address book:\n");
+            foreach (KeyValuePair<string, List<Contact>> valuePair in PeopleDictionary)
+            {
+                Console.WriteLine("Address book name:" + valuePair.Key);
+                foreach (Contact person in valuePair.Value)
+                {
+
+                    Console.WriteLine("First Name: " + person.FirstName);
+                    Console.WriteLine("Last Name: " + person.LastName);
+                    Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                    Console.WriteLine("Address: " + person.Addresses);
+                    Console.WriteLine("city: " + person.City);
+                    Console.WriteLine("State : " + person.State);
+                    Console.WriteLine("Zip:" + person.Zip);
+                    Console.WriteLine("-------------------------------------------");
+                }
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
+        }
     }
 }

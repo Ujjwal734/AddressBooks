@@ -27,6 +27,7 @@ while (command != "exist")
 Console.WriteLine("Using Dictionary and Lambda Function :-");
 DictionaryAddBooks dictionaryAdd = new DictionaryAddBooks();
 dictionaryAdd.AddPerson();
-//dictionaryAdd.ListPeople();
+dictionaryAdd.ListPeople();
 dictionaryAdd.SortByFirstName();
 dictionaryAdd.sortByCityStateOrZip();
+
