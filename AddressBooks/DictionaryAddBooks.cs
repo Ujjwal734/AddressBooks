@@ -168,5 +168,52 @@ namespace AddressBooks
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
+        public void Edit()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to edit.");
+            string firstName = Console.ReadLine();
+            Contact person = People.FirstOrDefault(x => x.FirstName.ToLower() == firstName.ToLower());
+            if (person != null)
+            {
+                People.Remove(person);
+                Console.WriteLine("Please detail again As you want changes!!!");
+                Contact person1 = new Contact();
+
+                Console.Write("Enter First Name: ");
+                person.FirstName = Console.ReadLine();
+
+                Console.Write("Enter Last Name: ");
+                person.LastName = Console.ReadLine();
+
+                Console.Write("Enter Phone Number: ");
+                person.PhoneNumber = Console.ReadLine();
+                Console.Write("Enter Email:");
+                person.Email = Console.ReadLine();
+
+                Console.Write("Enter Address: ");
+                string[] addresses = new string[1];
+                addresses[0] = Console.ReadLine();
+
+                Console.Write("Enter City: ");
+                person.City = Console.ReadLine();
+
+                Console.Write("Enter State: ");
+                person.State = Console.ReadLine();
+
+                Console.Write("Enter zip:");
+                person.Zip = Convert.ToInt32(Console.ReadLine());
+
+                People.Add(person);
+                Console.ReadKey();
+
+                return;
+            }
+            else
+            {
+                Console.WriteLine("That person could not be found. Press any key to continue");
+                Console.ReadKey();
+            }
+        }
+
     }
 }

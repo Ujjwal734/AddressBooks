@@ -30,4 +30,5 @@ dictionaryAdd.AddPerson();
 dictionaryAdd.ListPeople();
 dictionaryAdd.SortByFirstName();
 dictionaryAdd.sortByCityStateOrZip();
+dictionaryAdd.Edit();
 
