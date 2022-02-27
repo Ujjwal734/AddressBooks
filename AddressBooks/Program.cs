@@ -29,3 +29,4 @@ DictionaryAddBooks dictionaryAdd = new DictionaryAddBooks();
 dictionaryAdd.AddPerson();
 //dictionaryAdd.ListPeople();
 dictionaryAdd.SortByFirstName();
+dictionaryAdd.sortByCityStateOrZip();
