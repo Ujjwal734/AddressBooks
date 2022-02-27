@@ -39,7 +39,21 @@ namespace AddressBooks
             Console.Write("Enter zip:");
             person.Zip = Convert.ToInt32(Console.ReadLine());
 
-        }
+            //use LINQ to query the list for the first person with the same first name as the first name the user entered.
+            //used lambda operator
 
+            Contact person1 = People.FirstOrDefault(x => x.FirstName == person.FirstName);
+            Contact person2 = People.FirstOrDefault(x => x.LastName == person.LastName);
+            //Duplicate Check is done on Person Name while adding person to Address Book
+            if (person1 != null && person2 != null)
+            {
+                Console.WriteLine("Sorry this contact exist");
+            }
+            else
+            {
+                People.Add(person);
+                PeopleDictionary[AddressBookName] = People;
+            }
+        }
     }
 }
