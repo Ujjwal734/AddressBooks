@@ -55,5 +55,25 @@ namespace AddressBooks
                 PeopleDictionary[AddressBookName] = People;
             }
         }
+        public void SortByFirstName()
+        {
+            foreach (var addressBook in PeopleDictionary)
+            {
+                Console.WriteLine("Address book name:" + addressBook.Key);
+
+                foreach (var person in
+                    addressBook.Value.OrderBy(x => x.FirstName))
+                {
+                    Console.WriteLine("First Name: " + person.FirstName);
+                    Console.WriteLine("Last Name: " + person.LastName);
+                    Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                    Console.WriteLine("Address: " + person.Addresses);
+                    Console.WriteLine("city: " + person.City);
+                    Console.WriteLine("State : " + person.State);
+                    Console.WriteLine("Zip:" + person.Zip);
+                    Console.WriteLine("-------------------------------------------");
+                }
+            }
+        }
     }
 }
