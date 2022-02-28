@@ -1,6 +1,6 @@
 ﻿using AddressBooks;
 Console.WriteLine("Hello, welcome to Address Book...!");
-Contact person = new Contact();
+/*Contact person = new Contact();
 
 Console.WriteLine("Enter add command to add person ");
 Console.WriteLine("Enter remove commad to remove person ");
@@ -23,12 +23,39 @@ while (command != "exist")
             AddressBookManager.ListPeople();
             break;
     }
-}
+}*/
 Console.WriteLine("Using Dictionary and Lambda Function :-");
 DictionaryAddBooks dictionaryAdd = new DictionaryAddBooks();
-dictionaryAdd.AddPerson();
-dictionaryAdd.ListPeople();
-dictionaryAdd.SortByFirstName();
-dictionaryAdd.sortByCityStateOrZip();
-dictionaryAdd.Edit();
+Console.WriteLine("1. Add Person \n2. List Person \n3. Search By First Name \n4. Search By City or State \n5. Edit Contact \n6. Find Person In City Or State \n7. Press 7 to Exist Programe");
+int option = 0;
+while (option != 7)
+{
+    Console.WriteLine("Choose Option");
+    option = Convert.ToInt32(Console.ReadLine());
+    switch (option)
+    {
+        
+        case 1:
+            dictionaryAdd.AddPerson();
+            break;
+        case 2:
+            dictionaryAdd.ListPeople();
+            break;
+        case 3:
+            dictionaryAdd.SortByFirstName();
+            break;
+        case 4:
+            dictionaryAdd.sortByCityStateOrZip();
+            break;
+        case 5:
+            dictionaryAdd.Edit();
+            break;
+        case 6:
+            dictionaryAdd.FindPersonInCityOrState();
+            break;
 
+        default:
+            Console.WriteLine("Choose From The Given Option :) ");
+            break;
+    }
+}

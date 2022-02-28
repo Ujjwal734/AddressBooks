@@ -214,6 +214,103 @@ namespace AddressBooks
                 Console.ReadKey();
             }
         }
+        public void FindPersonInCityOrState()
+        {
+            Console.WriteLine("Enter  1. for city 2. state to find for particular person");
+            int ch = Convert.ToInt32(Console.ReadLine());
 
+
+
+            switch (ch)
+            {
+                case 1:
+                    Console.WriteLine("Choose Type city else or state to find perticular person");
+                    string city1 = Console.ReadLine();
+
+                    //creating list of person according to city
+                    List<Contact> cityWisePeople = new List<Contact>();
+                    Dictionary<string, List<Contact>> cityWisePeopleDictionary = new Dictionary<string, List<Contact>>();
+
+                    foreach (KeyValuePair<string, List<Contact>> valuePair in PeopleDictionary)
+                    { //for state do the same thing for state
+                        Contact person1 = valuePair.Value.Find(x => x.City.ToLower() == city1.ToLower());
+                        if (person1 != null)
+                        {
+                            cityWisePeople.Add(person1);
+                        }
+                    }
+                    cityWisePeopleDictionary[city1] = cityWisePeople;
+                    Console.WriteLine($"People in {city1}: ");
+                    foreach (var city in cityWisePeopleDictionary.Keys)
+                    {
+                        if (city.ToLower() == city1.ToLower())
+                        {
+                            foreach (var person in cityWisePeopleDictionary[city])
+                            {
+                                if (person != null)
+                                {
+                                    Console.WriteLine("First Name: " + person.FirstName);
+                                    Console.WriteLine("Last Name: " + person.LastName);
+                                    Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                                    Console.WriteLine("Address: " + person.Addresses);
+                                    Console.WriteLine("city: " + person.City);
+                                    Console.WriteLine("State : " + person.State);
+                                    Console.WriteLine("Zip:" + person.Zip);
+                                    Console.WriteLine("-------------------------------------------");
+                                }
+                            }
+                        }
+                    }
+                    int countPeople = cityWisePeopleDictionary.Count;
+                    Console.WriteLine("Total number of people in perticular city:" + countPeople);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter state to find perticular person");
+                    string SearchAccordingstate = Console.ReadLine();
+
+                    //creating list of person according to city
+                    List<Contact> stateWisePeople = new List<Contact>();
+                    Dictionary<string, List<Contact>> stateWisePeopleDictionary = new Dictionary<string, List<Contact>>();
+
+
+                    foreach (KeyValuePair<string, List<Contact>> valuePair in PeopleDictionary)
+                    { //Using lambda => here
+                        Contact person1 = valuePair.Value.Find(x => x.State.ToLower() == SearchAccordingstate.ToLower());
+                        if (person1 != null)
+                        {
+                            stateWisePeople.Add(person1);
+                        }
+                    }
+                    stateWisePeopleDictionary[SearchAccordingstate] = stateWisePeople;
+                    Console.WriteLine($"People in {SearchAccordingstate}: ");
+                    foreach (var state in stateWisePeopleDictionary.Keys)
+                    {
+                        if (state.ToLower() == SearchAccordingstate.ToUpper())
+                        {
+                            foreach (var person in stateWisePeopleDictionary[state])
+                            {
+                                if (person != null)
+                                {
+                                    Console.WriteLine("First Name: " + person.FirstName);
+                                    Console.WriteLine("Last Name: " + person.LastName);
+                                    Console.WriteLine("Phone Number: " + person.PhoneNumber);
+                                    Console.WriteLine("Address: " + person.Addresses);
+                                    Console.WriteLine("city: " + person.City);
+                                    Console.WriteLine("State : " + person.State);
+                                    Console.WriteLine("Zip:" + person.Zip);
+                                    Console.WriteLine("-------------------------------------------");
+                                }
+                            }
+                        }
+                    }
+                    int countPeople1 = stateWisePeopleDictionary.Count;
+                    Console.WriteLine("Total number of people in perticular city:" + countPeople1);
+                    break;
+                default:
+                    Console.WriteLine("Wrong choice!!");
+                    break;
+            }
+
+        }
     }
 }
