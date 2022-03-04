@@ -222,8 +222,6 @@ namespace AddressBooks
             Console.WriteLine("Enter  1. for city 2. state to find for particular person");
             int ch = Convert.ToInt32(Console.ReadLine());
 
-
-
             switch (ch)
             {
                 case 1:
@@ -274,7 +272,6 @@ namespace AddressBooks
                     //creating list of person according to city
                     List<Contact> stateWisePeople = new List<Contact>();
                     Dictionary<string, List<Contact>> stateWisePeopleDictionary = new Dictionary<string, List<Contact>>();
-
 
                     foreach (KeyValuePair<string, List<Contact>> valuePair in PeopleDictionary)
                     { //Using lambda => here
