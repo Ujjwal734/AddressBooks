@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using System.Threading.Tasks;
+using System.IO;
+using CsvHelper;
 
 namespace AddressBooks
 {
@@ -16,27 +19,27 @@ namespace AddressBooks
             Console.Write("Enter Address Book name:");
             string? AddressBookName = Console.ReadLine();
 
-            Console.Write("Enter First Name: ");
+            Console.Write("Enter First Name :- ");
             person.FirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name: ");
+            Console.Write("Enter Last Name :- ");
             person.LastName = Console.ReadLine();
 
-            Console.Write("Enter Phone Number: ");
+            Console.Write("Enter Phone Number :- ");
             person.PhoneNumber = Console.ReadLine();
-            Console.Write("Enter Emai:");
+            Console.Write("Enter Email :- ");
             person.Email = Console.ReadLine();
 
-            Console.Write("Enter Address: ");
+            Console.Write("Enter Address :- ");
             string[] addresses = new string[1];
             addresses[0] = Console.ReadLine();
 
-            Console.Write("Enter City: ");
+            Console.Write("Enter City :- ");
             person.City = Console.ReadLine();
-            Console.Write("Enter State: ");
+            Console.Write("Enter State :- ");
             person.State = Console.ReadLine();
 
-            Console.Write("Enter zip:");
+            Console.Write("Enter zip :- ");
             person.Zip = Convert.ToInt32(Console.ReadLine());
 
             //use LINQ to query the list for the first person with the same first name as the first name the user entered.
@@ -310,7 +313,34 @@ namespace AddressBooks
                     Console.WriteLine("Wrong choice!!");
                     break;
             }
-
+        }
+        public void CSVAddresFile()
+        {
+            string importfilePath = @"C:\Users\Ujjwal\source\repos\AddressBooks\AddressBooks\Contactss.csv";
+            string exportfilePath = @"C:\Users\Ujjwal\source\repos\AddressBooks\AddressBooks\Contactss1.csv";
+            using (var reader = new StreamReader(importfilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+                Console.WriteLine("Read data sucessfully from address Csv.");
+                foreach (Contact contactdata in records)
+                {
+                    Console.WriteLine(contactdata.FirstName);
+                    Console.WriteLine(contactdata.LastName);
+                    Console.WriteLine(contactdata.PhoneNumber);
+                    Console.WriteLine(contactdata.Addresses);
+                    Console.WriteLine(contactdata.City);
+                    Console.WriteLine(contactdata.State);
+                    Console.WriteLine(contactdata.Zip);
+                    Console.WriteLine(contactdata.Email);
+                }
+                Console.WriteLine("Reading From CSV File and Write to CSV File");
+                using (var writer = new StreamWriter(exportfilePath))
+                using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csvExport.WriteRecords(records);
+                }
+            }
         }
     }
 }

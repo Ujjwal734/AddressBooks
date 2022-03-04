@@ -26,8 +26,8 @@ namespace AddressBooks
             string[] addresses = new string[2];
             addresses[0] = Console.ReadLine();
             Console.Write("Enter Address 2 (Optional): ");
-            addresses[1] = Console.ReadLine();
-            person.Addresses = addresses;
+           // addresses[1] = Console.ReadLine();
+           // person.Addresses = addresses;
 
             Console.Write("Enter your City: ");
             person.City = Console.ReadLine();

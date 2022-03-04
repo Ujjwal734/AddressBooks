@@ -26,9 +26,9 @@ while (command != "exist")
 }*/
 Console.WriteLine("Using Dictionary and Lambda Function :-");
 DictionaryAddBooks dictionaryAdd = new DictionaryAddBooks();
-Console.WriteLine("1. Add Person \n2. List Person \n3. Search By First Name \n4. Search By City or State \n5. Edit Contact \n6. Find Person In City Or State \n7. Press 7 to Exist Programe");
+Console.WriteLine("1. Add Person \n2. List Person \n3. Search By First Name \n4. Search By City or State \n5. Edit Contact \n6. Find Person In City Or State \n7. Reading in CSV File \n8. Press 8 to Exist Programe");
 int option = 0;
-while (option != 7)
+while (option != 8)
 {
     Console.WriteLine("Choose Option");
     option = Convert.ToInt32(Console.ReadLine());
@@ -52,6 +52,9 @@ while (option != 7)
             break;
         case 6:
             dictionaryAdd.FindPersonInCityOrState();
+            break;
+        case 7:
+            dictionaryAdd.CSVAddresFile();
             break;
 
         default:
